@@ -154,7 +154,7 @@ const [editPhone, setEditPhone] = useState('');
 
       <View className="p-5">
         
-        <Text className="text-xl font-bold mb-4">Your Account</Text>
+        <Text className="text-xl font-bold mb-4">حسابك:</Text>
         {isEditing ? (
           <View>
             {/* <Input
@@ -175,7 +175,7 @@ const [editPhone, setEditPhone] = useState('');
               onPress={handleSave}
               className="bg-blue-600 p-3 rounded-lg mb-4"
             >
-              <Text className="text-white text-center">Save Changes</Text>
+              <Text className="text-white text-center">حفظ التغيرات</Text>
             </TouchableOpacity>
           </View>
         ) : (
@@ -187,14 +187,14 @@ const [editPhone, setEditPhone] = useState('');
               onPress={() => setIsEditing(true)}
               className="bg-blue-600 p-3 rounded-lg mt-4"
             >
-              <Text className="text-white text-center">Edit</Text>
+              <Text className="text-white text-center">تعديل</Text>
             </TouchableOpacity>
           </View>
         )}
       </View>
 
       <View className="p-5">
-        <Text className="text-xl font-bold mb-4">Add New Estate</Text>
+        <Text className="text-xl font-bold mb-4">اضافة عقار</Text>
         <Input
           value={newEstateName}
           onChangeText={setNewEstateName}
@@ -217,7 +217,7 @@ const [editPhone, setEditPhone] = useState('');
         />
       </View>
       <View className="flex-1 bg-white p-5">
-      <Text className="text-xl font-bold mb-4">My Estates</Text>
+      <Text className="text-xl font-bold mb-4">عقاراتي</Text>
       <FlatList
         data={realEstates}
         keyExtractor={item => item.id}
@@ -226,12 +226,12 @@ const [editPhone, setEditPhone] = useState('');
             <Text className="text-lg font-semibold">{item.Name}</Text>
             <Text className="text-sm text-gray-600">{item.RealEstateUrl}</Text>
             <TouchableOpacity onPress={() => handleDeleteEstate(item.id)} className="bg-red-500 p-2 rounded-lg mt-2">
-              <Text className="text-white text-center">Delete Estate</Text>
+              <Text className="text-white text-center">حذف عقار</Text>
             </TouchableOpacity>
           </View>
         )}
       />
-      {realEstates.length === 0 && <Text className="text-center text-gray-500">No estates found.</Text>}
+      {realEstates.length === 0 && <Text className="text-center text-gray-500">لا توجد عقارات</Text>}
     </View>
     </SafeAreaView>
   );

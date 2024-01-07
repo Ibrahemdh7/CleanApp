@@ -21,14 +21,15 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.ibrahemdh7.ReactNativeUI"
     },
     "web": {
       "favicon": "./assets/favicon.png"
     },
     "extra": {
       "eas": {
-        "projectId": "7d0d6ef3-543e-4e41-bdaa-3c3584d1cfd5"
+        "projectId": "528588ce-0a9d-4f4a-8466-ef9b79455d86"
       }
     }
   }

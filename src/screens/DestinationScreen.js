@@ -187,7 +187,7 @@ export default function DestinationScreen(props) {
         RealEstateUrl: realEstateUrl,
         UserName: user.name || user.email, // Use displayName or fallback to email
       });
-      Alert.alert('Success', 'Real estate entry created successfully.');
+      Alert.alert('نجاح', 'تم انشاء عقارك بنجاح');
       // Clear the form fields
       setRealEstateName('');
       setRealEstateUrl('');
@@ -299,7 +299,7 @@ export default function DestinationScreen(props) {
             disabled={!isFormValid}
             className={`bg-blue-600 p-3 m-4 rounded-lg ${!isFormValid ? 'bg-blue-300' : ''}`}
           >
-            <Text className="text-white text-center text-lg">Create Real Estate</Text>
+            <Text className="text-white text-center text-lg">إنشاء عقار</Text>
           </TouchableOpacity>
         </View>
       )}

@@ -24,20 +24,39 @@ export default function LastOrdersScreen() {
         setLoading(false);
         return;
       }
-
+  
       const q = query(
         collection(db, 'orders'),
-        where('UserID', '==', user.uid), // Filter by the logged-in user's ID
+        where('UserID', '==', user.uid),
         orderBy('Date', 'desc'),
         limit(10)
       );
-
+  
       try {
         const querySnapshot = await getDocs(q);
-        const fetchedOrders = querySnapshot.docs.map(doc => ({
-          id: doc.id,
-          ...doc.data(),
-        }));
+        const fetchedOrders = [];
+  
+        for (const doc of querySnapshot.docs) {
+          const orderData = doc.data();
+          let estateName = '';
+  
+          // Assuming each order has an EstateID field linking to the RealEstate collection
+          if (orderData.EstateID) {
+            const estateRef = doc(db, 'RealEstate', orderData.Name);
+            const estateSnap = await getDoc(estateRef);
+  
+            if (estateSnap.exists()) {
+              estateName = estateSnap.data().Name; // Assuming EstateName is the field you want
+            }
+          }
+  
+          fetchedOrders.push({
+            id: doc.id,
+            EstateName: estateName,
+            ...orderData,
+          });
+        }
+  
         setOrders(fetchedOrders);
       } catch (error) {
         console.error('Error fetching last orders:', error);
@@ -45,9 +64,9 @@ export default function LastOrdersScreen() {
         setLoading(false);
       }
     };
-
+  
     fetchLastOrders();
-  }, [user]); // Re-fetch when the user object changes
+  }, [user]);
 
   if (loading) {
     return <ActivityIndicator size="large" />;
@@ -89,6 +108,7 @@ export default function LastOrdersScreen() {
       <Text className="text-black">Phone: {item.UserPhone}</Text>
       <Text className="text-black">Total: ${item.TotalAmount}</Text>
       <Text className="text-black">Status: {item.Status}</Text>
+      <Text className="text-black">Estate: {item.Name}</Text>
       <Text className="text-black">{`Date: ${formatDate(item.Date.toDate())}`}</Text> 
 
     </View>

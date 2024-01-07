@@ -273,7 +273,7 @@ const Header = ({ title, onBackPress, onRightPress, rightIcon }) => {
         <Text className="text-xl font-bold">Total: ${(total + tax).toFixed(2)}</Text>
       </View>
     <TouchableOpacity onPress={()=> handleProceedToCheckout()} className="bg-blue-600 hover:bg-blue-700 p-3 m-4 rounded-lg">
-      <Text className="text-white text-center text-lg">Proceed to Checkout</Text>
+      <Text className="text-white text-center text-lg">تأكيد العملية</Text>
     </TouchableOpacity>
   </SafeAreaView>
   );
