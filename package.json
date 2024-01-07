@@ -10,8 +10,9 @@
     "web": "expo start --web",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
-    "build": "react-scripts build"
+    "build": "expo build"
   }
+  
   ,
   "dependencies": {
     "@react-native-async-storage/async-storage": "1.18.2",
